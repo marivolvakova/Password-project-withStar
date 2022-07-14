@@ -13,8 +13,8 @@
 		D6B149892880C9AF00A36FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6B149872880C9AF00A36FB1 /* Main.storyboard */; };
 		D6B1498B2880C9B100A36FB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6B1498A2880C9B100A36FB1 /* Assets.xcassets */; };
 		D6B1498E2880C9B100A36FB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6B1498C2880C9B100A36FB1 /* LaunchScreen.storyboard */; };
-		D6B149982880CAE100A36FB1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149962880CAE100A36FB1 /* StringExtension.swift */; };
-		D6B149992880CAE100A36FB1 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149972880CAE100A36FB1 /* TextFieldExtension.swift */; };
+		D6B149A52880CCAE00A36FB1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149A42880CCAE00A36FB1 /* StringExtension.swift */; };
+		D6B149A72880CCCB00A36FB1 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149A62880CCCB00A36FB1 /* TextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		D6B1498A2880C9B100A36FB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6B1498D2880C9B100A36FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6B1498F2880C9B100A36FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6B149962880CAE100A36FB1 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D6B149972880CAE100A36FB1 /* TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		D6B149A42880CCAE00A36FB1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D6B149A62880CCCB00A36FB1 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,26 +60,57 @@
 		D6B149802880C9AF00A36FB1 /* Password-project(with*) */ = {
 			isa = PBXGroup;
 			children = (
-				D6B149812880C9AF00A36FB1 /* AppDelegate.swift */,
-				D6B149832880C9AF00A36FB1 /* SceneDelegate.swift */,
-				D6B149852880C9AF00A36FB1 /* ViewController.swift */,
-				D6B149872880C9AF00A36FB1 /* Main.storyboard */,
-				D6B1498A2880C9B100A36FB1 /* Assets.xcassets */,
-				D6B1498C2880C9B100A36FB1 /* LaunchScreen.storyboard */,
-				D6B1498F2880C9B100A36FB1 /* Info.plist */,
-				D6B149952880CAE100A36FB1 /* Extensions */,
+				D6B1499B2880CB2100A36FB1 /* Resourses */,
+				D6B1499A2880CB1000A36FB1 /* Sourses */,
 			);
 			path = "Password-project(with*)";
 			sourceTree = "<group>";
 		};
-		D6B149952880CAE100A36FB1 /* Extensions */ = {
+		D6B1499A2880CB1000A36FB1 /* Sourses */ = {
 			isa = PBXGroup;
 			children = (
-				D6B149962880CAE100A36FB1 /* StringExtension.swift */,
-				D6B149972880CAE100A36FB1 /* TextFieldExtension.swift */,
+				D6B149A82880CCE500A36FB1 /* Extensions */,
+				D6B149A32880CBB400A36FB1 /* Scene */,
+				D6B149A22880CB9C00A36FB1 /* App */,
 			);
-			name = Extensions;
-			path = "../../Password-project/Password-project/Sourses/Extensions";
+			path = Sourses;
+			sourceTree = "<group>";
+		};
+		D6B1499B2880CB2100A36FB1 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				D6B149872880C9AF00A36FB1 /* Main.storyboard */,
+				D6B1498C2880C9B100A36FB1 /* LaunchScreen.storyboard */,
+				D6B1498F2880C9B100A36FB1 /* Info.plist */,
+				D6B1498A2880C9B100A36FB1 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		D6B149A22880CB9C00A36FB1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D6B149832880C9AF00A36FB1 /* SceneDelegate.swift */,
+				D6B149812880C9AF00A36FB1 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D6B149A32880CBB400A36FB1 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D6B149852880C9AF00A36FB1 /* ViewController.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		D6B149A82880CCE500A36FB1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D6B149A62880CCCB00A36FB1 /* TextFieldExtension.swift */,
+				D6B149A42880CCAE00A36FB1 /* StringExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,10 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6B149982880CAE100A36FB1 /* StringExtension.swift in Sources */,
+				D6B149A52880CCAE00A36FB1 /* StringExtension.swift in Sources */,
 				D6B149862880C9AF00A36FB1 /* ViewController.swift in Sources */,
 				D6B149822880C9AF00A36FB1 /* AppDelegate.swift in Sources */,
-				D6B149992880CAE100A36FB1 /* TextFieldExtension.swift in Sources */,
+				D6B149A72880CCCB00A36FB1 /* TextFieldExtension.swift in Sources */,
 				D6B149842880C9AF00A36FB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +337,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CGLFK7WJHJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Password-project(with*)/Info.plist";
+				INFOPLIST_FILE = "Password-project(with*)/Resourses/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -334,7 +365,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CGLFK7WJHJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Password-project(with*)/Info.plist";
+				INFOPLIST_FILE = "Password-project(with*)/Resourses/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

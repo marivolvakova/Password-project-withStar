@@ -144,8 +144,8 @@ class ViewController: UIViewController {
             self.activityIndicator.isHidden = false
             
         }
-        DispatchQueue.global().async {
-            self.bruteForce(passwordToUnlock: self.password)
+        DispatchQueue.global().async { [self] in
+            self.bruteForce(passwordToUnlock: password)
         }
     }
     
@@ -154,7 +154,7 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.async {
             
-            self.label.text = "Ваш пароль \(self.password) не взломан"
+            self.label.text = "Ваш пароль \(self.textField.text ?? "") не взломан"
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
             self.textField.isSecureTextEntry = false
@@ -171,7 +171,7 @@ class ViewController: UIViewController {
             password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
             
             DispatchQueue.main.async {
-                self.label.text = "Ваш пароль -  \(password)"
+                self.label.text = "Ваш пароль - \(password)"
                 self.activityIndicator.startAnimating()
             }
             print(password)
