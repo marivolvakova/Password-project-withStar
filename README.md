@@ -4,10 +4,7 @@ Eng
 
 Password  Generator is one page app, that generates random password and automatically selects all possible options to guess it.
 
-The project including:
-
-Reset password button
-Change background color button
+The project includs: Generate password button, Reset password button, Change background color button, Textfield, lable, activity Indicator.
 
 This this project was made to test multithreading. So in the process of generating password the UI is not blocked. The Change background color button is active.
 
@@ -24,9 +21,6 @@ https://user-images.githubusercontent.com/104025325/179367369-f82fc40a-c4eb-4cde
 
 Генератор паролей - это одностраничное приложение, которое генерирует случайный пароль и автоматически перебирает все возможные варианты для его угадывания.
 
-Проект включает:
-
-Кнопка сброса пароля
-Кнопка Изменить цвет фона
+Проект включает: Generate password button, Reset password button, Change background color button, Textfield, lable, activity Indicator.
 
 Этот проект был создан для тестирования многопоточности. Таким образом, в процессе генерации пароля пользовательский интерфейс не блокируется. Кнопка Изменить цвет фона активна.
