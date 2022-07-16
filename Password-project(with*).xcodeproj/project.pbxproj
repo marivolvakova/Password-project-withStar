@@ -14,7 +14,8 @@
 		D6B1498B2880C9B100A36FB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6B1498A2880C9B100A36FB1 /* Assets.xcassets */; };
 		D6B1498E2880C9B100A36FB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6B1498C2880C9B100A36FB1 /* LaunchScreen.storyboard */; };
 		D6B149A52880CCAE00A36FB1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149A42880CCAE00A36FB1 /* StringExtension.swift */; };
-		D6B149A72880CCCB00A36FB1 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149A62880CCCB00A36FB1 /* TextFieldExtension.swift */; };
+		D6B149A72880CCCB00A36FB1 /* ViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B149A62880CCCB00A36FB1 /* ViewControllerExtention.swift */; };
+		D6E2AFC22882FE4E00B1E0D7 /* BruteForceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E2AFC12882FE4E00B1E0D7 /* BruteForceOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		D6B1498D2880C9B100A36FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6B1498F2880C9B100A36FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6B149A42880CCAE00A36FB1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D6B149A62880CCCB00A36FB1 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		D6B149A62880CCCB00A36FB1 /* ViewControllerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtention.swift; sourceTree = "<group>"; };
+		D6E2AFC12882FE4E00B1E0D7 /* BruteForceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				D6B149852880C9AF00A36FB1 /* ViewController.swift */,
+				D6E2AFC12882FE4E00B1E0D7 /* BruteForceOperation.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -107,8 +110,8 @@
 		D6B149A82880CCE500A36FB1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D6B149A62880CCCB00A36FB1 /* TextFieldExtension.swift */,
 				D6B149A42880CCAE00A36FB1 /* StringExtension.swift */,
+				D6B149A62880CCCB00A36FB1 /* ViewControllerExtention.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,8 +189,9 @@
 			files = (
 				D6B149A52880CCAE00A36FB1 /* StringExtension.swift in Sources */,
 				D6B149862880C9AF00A36FB1 /* ViewController.swift in Sources */,
+				D6E2AFC22882FE4E00B1E0D7 /* BruteForceOperation.swift in Sources */,
 				D6B149822880C9AF00A36FB1 /* AppDelegate.swift in Sources */,
-				D6B149A72880CCCB00A36FB1 /* TextFieldExtension.swift in Sources */,
+				D6B149A72880CCCB00A36FB1 /* ViewControllerExtention.swift in Sources */,
 				D6B149842880C9AF00A36FB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

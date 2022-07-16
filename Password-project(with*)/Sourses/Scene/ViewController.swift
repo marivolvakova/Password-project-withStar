@@ -11,8 +11,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var isRunning = true
-    var password = ""
+    static var isRunning = true
+    static var password = ""
     
     var verticalStack: UIStackView = {
         let stack = UIStackView()
@@ -26,22 +26,18 @@ class ViewController: UIViewController {
     
     var isBlack: Bool = false {
         didSet {
-            if isBlack {
-                self.view.backgroundColor = .black
-            } else {
-                self.view.backgroundColor = .white
-            }
+            view.backgroundColor = isBlack ? .black : .white
         }
     }
     
-    var activityIndicator: UIActivityIndicatorView = {
+    static var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .large
         activityIndicator.color = .systemOrange
         return activityIndicator
     }()
     
-    var textField: UITextField = {
+    static var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Введите пароль"
         textField.text = ""
@@ -54,7 +50,7 @@ class ViewController: UIViewController {
         return textField
     }()
     
-    var label: UILabel = {
+    static var label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.text = "Ваш пароль отобразится здесь"
@@ -62,64 +58,28 @@ class ViewController: UIViewController {
         return label
     }()
     
-    var colorChangeButton: UIButton = {
-        let colorChangeButton = UIButton()
-        colorChangeButton.setTitle("Изменить цвет фона", for: .normal)
-        colorChangeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        colorChangeButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        colorChangeButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        colorChangeButton.backgroundColor = .systemOrange
-        colorChangeButton.tintColor = .white
-        colorChangeButton.layer.masksToBounds = true
-        colorChangeButton.layer.cornerRadius = 10
-        colorChangeButton.addTarget(self, action: #selector(onBut), for: .touchUpInside)
-        return colorChangeButton
-    }()
+    lazy var colorChangeButton = createButton(title: "Изменить цвет фона", color: .systemOrange, selector: #selector(onBut))
+    lazy var passwordButton = createButton(title: "Сгенерировать пароль", color: .systemBlue, selector: #selector(generate))
+    lazy var resetButton = createButton(title: "Сбросить пароль", color: .darkGray, selector: #selector(reset))
     
-    var passwordButton: UIButton = {
-        let passwordButton = UIButton()
-        passwordButton.setTitle("Сгенерировать пароль", for: .normal)
-        passwordButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        passwordButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        passwordButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        passwordButton.backgroundColor = .systemBlue
-        passwordButton.tintColor = .white
-        passwordButton.layer.masksToBounds = true
-        passwordButton.layer.cornerRadius = 10
-        passwordButton.addTarget(self, action: #selector(generate), for: .touchUpInside)
-        return passwordButton
-    }()
     
-    var stopButton: UIButton = {
-        let stopButton = UIButton()
-        stopButton.setTitle("Остановить генерацию", for: .normal)
-        stopButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        stopButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        stopButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        stopButton.backgroundColor = .darkGray
-        stopButton.tintColor = .white
-        stopButton.layer.masksToBounds = true
-        stopButton.layer.cornerRadius = 10
-        stopButton.addTarget(self, action: #selector(stopFunc), for: .touchUpInside)
-        return stopButton
-    }()
-
+    
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        textField.delegate = self
+        ViewController.textField.delegate = self
     }
     
     func setupLayout() {
         view.addSubview(verticalStack)
         
-        verticalStack.addArrangedSubview(textField)
-        verticalStack.addArrangedSubview(activityIndicator)
-        verticalStack.addArrangedSubview(label)
+        verticalStack.addArrangedSubview(ViewController.textField)
+        verticalStack.addArrangedSubview(ViewController.activityIndicator)
+        verticalStack.addArrangedSubview(ViewController.label)
         verticalStack.addArrangedSubview(passwordButton)
-        verticalStack.addArrangedSubview(stopButton)
+        verticalStack.addArrangedSubview(resetButton)
         verticalStack.addArrangedSubview(colorChangeButton)
         
         verticalStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18).isActive = true
@@ -135,80 +95,48 @@ class ViewController: UIViewController {
     }
     
     @objc func generate() {
-        self.isRunning = true
-       
-        password = textField.text ?? ""
+        ViewController.isRunning = true
+        
+        ViewController.password = String.randomPassword()
         DispatchQueue.main.async {
-            self.textField.text = self.password
-            self.activityIndicator.startAnimating()
-            self.activityIndicator.isHidden = false
-            
+            ViewController.textField.text = ViewController.password
+            ViewController.activityIndicator.startAnimating()
+            ViewController.activityIndicator.isHidden = false
+            ViewController.textField.isSecureTextEntry = true
         }
-        DispatchQueue.global().async { [self] in
-            self.bruteForce(passwordToUnlock: password)
+        
+        DispatchQueue.global().async {
+            BruteforceOperation.bruteForce(passwordToUnlock: ViewController.password)
         }
     }
     
-    @objc func stopFunc() {
-        self.isRunning = false
+    
+    @objc func reset() {
+        ViewController.isRunning = false
         
         DispatchQueue.main.async {
+            ViewController.textField.text = ""
+            ViewController.label.text = "Ваш пароль отобразится здесь"
+            ViewController.activityIndicator.stopAnimating()
+            ViewController.activityIndicator.isHidden = true
             
-            self.label.text = "Ваш пароль \(self.textField.text ?? "") не взломан"
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
-            self.textField.isSecureTextEntry = false
         }
     }
     
     //MARK: - Methods
-
-    func bruteForce(passwordToUnlock: String) {
-        let ALLOWED_CHARACTERS:   [String] = String().printable.map { String($0) }
-        var password: String = ""
-        
-        while password != passwordToUnlock && isRunning {
-            password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
-            
-            DispatchQueue.main.async {
-                self.label.text = "Ваш пароль - \(password)"
-                self.activityIndicator.startAnimating()
-            }
-            print(password)
-            }
-            
-        DispatchQueue.main.async {
-            self.textField.isSecureTextEntry = false
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-        }
-        print(password)
-        }
     
-    func indexOf(character: Character, _ array: [String]) -> Int {
-        return array.firstIndex(of: String(character))!
-    }
-    
-    func characterAt(index: Int, _ array: [String]) -> Character {
-        return index < array.count ? Character(array[index])
-        : Character("")
-    }
-    
-    func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
-        var str: String = string
-        
-        if str.count <= 0 {
-            str.append(characterAt(index: 0, array))
-        }
-        else {
-            str.replace(at: str.count - 1,
-                        with: characterAt(index: (indexOf(character: str.last!, array) + 1) % array.count, array))
-            
-            if indexOf(character: str.last!, array) == 0 {
-                str = String(generateBruteForce(String(str.dropLast()), fromArray: array)) + String(str.last!)
-            }
-        }
-        return str
+    func createButton(title: String, color: UIColor, selector: Selector) -> UIButton {
+        let button = UIButton()
+        button.setTitle("\(title)", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        button.backgroundColor = color
+        button.tintColor = .white
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: selector, for: .touchUpInside)
+        return button
     }
 }
 
